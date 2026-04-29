@@ -1149,6 +1149,12 @@ void llama_model::load_hparams(llama_model_loader & ml) {
 
                 ml.get_key(LLM_KV_ATTENTION_LAYERNORM_EPS, hparams.f_norm_eps);
 
+                // Some ModernBert derivatives (e.g. IBM Granite Embedding 97m R2) use
+                // SiLU/SwiGLU in the FFN instead of the default GELU/GeGLU.
+                std::string hidden_act = "gelu";
+                ml.get_key(LLM_KV_HIDDEN_ACT, hidden_act, false);
+                hparams.ffn_act_swiglu = (hidden_act == "silu" || hidden_act == "swish");
+
                 switch (hparams.n_layer) {
                     case 12:
                         type = LLM_TYPE_47M; break; // granite-embedding-small

@@ -1538,6 +1538,12 @@ class TextModel(ModelBase):
         if chkhsh == "862f827721df956049dff5ca81a57f29e575280bc622e290d3bf4e35eca29015":
             # ref: https://huggingface.co/codefuse-ai/F2LLM-v2-4B
             res = "f2llmv2"
+        if chkhsh == "789696f5946cc0fc59371f39f6097cafed196b3acded6140432f26bbb1ae1669":
+            # ref: https://huggingface.co/ibm-granite/granite-embedding-311m-multilingual-r2
+            res = "modern-bert"
+        if chkhsh == "f241072145675bf8322086f115aebad05e9f869557a238bf2150a2a417d1bf60":
+            # ref: https://huggingface.co/ibm-granite/granite-embedding-97m-multilingual-r2
+            res = "modern-bert"
 
         if res is None:
             logger.warning("\n")
@@ -12573,6 +12579,11 @@ class ModernBertModel(BertModel):
             self.gguf_writer.add_sliding_window_pattern(sliding_window_pattern)
         self.gguf_writer.add_rope_scaling_type(gguf.RopeScalingType.NONE)
         self.gguf_writer.add_vocab_size(self.hparams["vocab_size"])
+        # FFN activation: ModernBert uses a GLU pair (ffn_up output is 2*n_ff). The
+        # original ModernBERT uses GELU (-> GeGLU); some derivatives such as IBM
+        # Granite Embedding 97m R2 use SiLU (-> SwiGLU). Persist this so the
+        # llama.cpp graph can pick the matching activation.
+        self.gguf_writer.add_hidden_act(self.hparams.get("hidden_activation", "gelu"))
 
     def modify_tensors(self, data_torch: Tensor, name: str, bid: int | None) -> Iterable[tuple[str, Tensor]]:
         if name.startswith("model."):

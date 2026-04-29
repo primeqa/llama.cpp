@@ -81,7 +81,8 @@ llm_build_modern_bert::llm_build_modern_bert(const llama_model & model, const ll
                 NULL,                      NULL, NULL,
                 model.layers[il].ffn_down, NULL, NULL,
                 NULL,
-                LLM_FFN_GEGLU, LLM_FFN_SEQ, il);
+                hparams.ffn_act_swiglu ? LLM_FFN_SWIGLU : LLM_FFN_GEGLU,
+                LLM_FFN_SEQ, il);
 
         // attentions bypass the intermediate layer
         cur = ggml_add(ctx0, cur, ffn_inp);

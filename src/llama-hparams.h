@@ -40,6 +40,11 @@ struct llama_hparams {
     bool use_par_res;
     bool swin_norm;
 
+    // FFN gated activation flavor (used by ModernBert/derivatives that may use
+    // SwiGLU instead of the default GeGLU). The graph for those archs reads
+    // this to pick LLM_FFN_SWIGLU vs LLM_FFN_GEGLU.
+    bool ffn_act_swiglu = false;
+
     uint32_t n_ctx_train; // context size the model was trained on
     uint32_t n_embd;
     uint32_t n_layer;
