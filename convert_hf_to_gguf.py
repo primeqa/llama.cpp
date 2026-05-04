@@ -1540,7 +1540,7 @@ class TextModel(ModelBase):
             res = "f2llmv2"
         if chkhsh == "789696f5946cc0fc59371f39f6097cafed196b3acded6140432f26bbb1ae1669":
             # ref: https://huggingface.co/ibm-granite/granite-embedding-311m-multilingual-r2
-            res = "modern-bert"
+            res = "granite-embed-r2"
         if chkhsh == "f241072145675bf8322086f115aebad05e9f869557a238bf2150a2a417d1bf60":
             # ref: https://huggingface.co/ibm-granite/granite-embedding-97m-multilingual-r2
             res = "modern-bert"

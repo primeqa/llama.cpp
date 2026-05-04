@@ -2002,7 +2002,8 @@ void llama_vocab::impl::load(llama_model_loader & ml, const LLM_KV & kv) {
                     tokenizer_pre == "jais-2") {
                 pre_type = LLAMA_VOCAB_PRE_TYPE_JAIS2;
             } else if (
-                    tokenizer_pre == "gemma4") {
+                    tokenizer_pre == "gemma4" ||
+                    tokenizer_pre == "granite-embed-r2") {
                 pre_type = LLAMA_VOCAB_PRE_TYPE_GEMMA4;
                 escape_whitespaces = true;
             } else if (
