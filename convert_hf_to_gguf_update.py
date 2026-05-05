@@ -179,7 +179,7 @@ pre_computed_hashes = [
     # jina-v2-de variants
     {"name": "jina-v2-de", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/aari1995/German_Semantic_V3", "chkhsh": "b3d1dd861f1d4c5c0d2569ce36baf3f90fe8a102db3de50dd71ff860d91be3df"},
     {"name": "gpt-2", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/evilfreelancer/ruGPT3XL", "chkhsh": "0fe1cf6eda062318a1af7270f3331a85c539a01778ff948e24388e949c5282f4"},
-    {"name": "modern-bert", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/ibm-granite/granite-embedding-97m-multilingual-r2", "chkhsh": "f241072145675bf8322086f115aebad05e9f869557a238bf2150a2a417d1bf60"},
+    {"name": "gpt-4o", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/ibm-granite/granite-embedding-97m-multilingual-r2", "chkhsh": "f241072145675bf8322086f115aebad05e9f869557a238bf2150a2a417d1bf60"},
     {"name": "granite-embed-r2", "tokt": TOKENIZER_TYPE.BPE, "repo": "https://huggingface.co/ibm-granite/granite-embedding-311m-multilingual-r2", "chkhsh": "789696f5946cc0fc59371f39f6097cafed196b3acded6140432f26bbb1ae1669"},
 ]
 

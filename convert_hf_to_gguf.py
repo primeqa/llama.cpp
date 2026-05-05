@@ -1543,7 +1543,7 @@ class TextModel(ModelBase):
             res = "granite-embed-r2"
         if chkhsh == "f241072145675bf8322086f115aebad05e9f869557a238bf2150a2a417d1bf60":
             # ref: https://huggingface.co/ibm-granite/granite-embedding-97m-multilingual-r2
-            res = "modern-bert"
+            res = "gpt-4o"
 
         if res is None:
             logger.warning("\n")
